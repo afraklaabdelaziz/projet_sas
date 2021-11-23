@@ -3,250 +3,414 @@
 
 // *******strecture des information de client********
 
-struct Client{
+struct Client
+{
 	char Nom[12];
 	char Prenom[12];
 	char CIN[12];
 	float Montant;
 };
-struct	Client C[1000];
-int nombreDuCompte = 0;
+
+          struct	Client C[1000];
+          int nombreDuCompte = 0;
 
 //  fonction permit d'ajouter une client
+
 void Ajouter_client(){
         
     
          	printf("saisir le nom de client \n");
          	scanf("%s", C[nombreDuCompte].Nom);
-         	printf("donner le prenom de client\n");
+         	
+			printf("donner le prenom de client\n");
          	scanf("%s", C[nombreDuCompte].Prenom);
-         	printf("donner CIN de client \n");
+         	
+			printf("donner CIN de client \n");
          	scanf("%s", C[nombreDuCompte].CIN);
-         	printf("donner le montant\n");
+         	
+			printf("donner le montant\n");
          	scanf("%f",&C[nombreDuCompte].Montant );
+         	
+         	printf("le comptes a ete cree avec succee\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f\n\n",C[nombreDuCompte].Nom,C[nombreDuCompte].Prenom,C[nombreDuCompte].CIN,C[nombreDuCompte].Montant);
          	
          	nombreDuCompte++;
 }
- //  fonction permit de Depotre le montant  
+//  fonction permit de Depotre le montant  
+
 void Depot(int i){	
 	 float MD;
 	 printf("saisir le montant que vous volez Depotre\t");
 	 scanf("%f",&MD);
+	 
 	 C[i].Montant += MD;
-	 printf("votre montant apre l'operation est %f ",C[i].Montant);
+	 printf("votre montant apree l'operation est %f\n ",C[i].Montant);
      
 }
+
 //  fonction permit de retrer le montant	 
 	 
-void Retrait(int u){
-	 float MR;
+void Retrait(int u)
+{	 
+     float MR;
+	 
 	 printf("saisir le montant que vous volez retrait\t");
 	 scanf("%f",&MR);
-	 if (MR > C[u].Montant){
-	 	printf("votre solde ne suffit pas ");
+	 
+	 if (MR > C[u].Montant)
+	 {	
+	     printf("votre solde ne suffit pas\n ");
 	 } 
-	 else{
-	 printf("votre montant apres l'operation est %f",C[u].Montant -= MR);
-      }
+	 else
+	 {
+	     printf("votre montant apres l'operation est %f\n",C[u].Montant -= MR);
+     }
 }
-   // fonction permit de  recherche une compts de client
-void recherche(){
-   	char tmp[12];
+
+// fonction permit de  recherche une compts de client
+
+void recherche()
+{   	
+	char tmp[12];
    	int i,choi,c, position;
-   	printf("entrer CIN de client que vous recherche \n");
+   	
+	printf("entrer CIN de client que vous recherche \n");
    	scanf("%s",tmp);
-   	for(i=0;i<nombreDuCompte;i++){
-   		if (strcmp(tmp,C[i].CIN)==0){
-         	printf("le client a rechercher a un montant %f",C[i].Montant);	
-			 position = i; 
-       } 
-	}
+   	
+	   for(i=0;i<nombreDuCompte;i++)
+   		{
+		   if (strcmp(tmp,C[i].CIN)==0)
+         	{
+			   printf("le client a rechercher a un montant %f",C[i].Montant);	
+			  position = i; 
+            } 
+	    }
 	
      printf("les operation :\n");
-     printf("1 : retrait\n");
-     printf("2 : depot\n");
-     printf("choisir une choix que vous volez ");
+     
+	 printf("1 : retrait\n");
+     
+	 printf("2 : depot\n");
+     
+	 printf("choisir une choix que vous volez ");
      scanf("%d",&choi);
      
-     switch(choi){
-     	case 1:
+     switch(choi)
+     {
+	 	case 1:
      		Retrait(position);
      		break;
- 		case  2:
+ 		
+		 case  2:
  			Depot(position);
  			break;
- 		default :
+ 		
+		 default :
  			printf("ce choix n'existe pas");
 	 }
 
 }	 
 	 
 // fonction premit de recherche un client par son CIN
-void Recherche_par_CIN(){
-	   	char tmp[12];
-   	int i,choi,c;
-   	printf("entrer CIN de client que vous recherche \n");
+
+void Recherche_par_CIN()
+{	   	
+    char tmp[12];
+   	
+	int i,choi,c;
+   	
+	printf("entrer CIN de client que vous recherche \n");
    	scanf("%s",tmp);
-   	for(i=0;i<nombreDuCompte;i++){
-   		if (strcmp(tmp,C[i].CIN)==0){
-         	printf("le client a rechercher est Nom: %s  Prenom : %s CIN : %s  Montant : %f",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+   	
+	   for(i=0;i<nombreDuCompte;i++)
+   		{
+		   if (strcmp(tmp,C[i].CIN)==0)
+           {	 
+			  printf("le client a rechercher est Nom: %s  |Prenom : %s |CIN : %s  |Montant : %f",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+           }
         }
-    }
-	
 }
+
 //  Par Ordre Ascendant
-void afficheAscendant(){
-	int i;
-  struct Client t;
-	for (i=0;i<nombreDuCompte;i++){
-		if(C[i].Montant>C[i+1].Montant);
+
+void afficheAscendant()
+{	
+   int i;
+   
+   struct Client t;
+	
+	for (i=0;i<nombreDuCompte;i++)
+	{	
+	   if(C[i].Montant>C[i+1].Montant);
+		
 		t=C[i];
+		
 		C[i]=C[i+1];
+		
 		C[i+1]=t;
 	}
-	for (i = 0; i <= nombreDuCompte ; i++) {
-		printf("les comptes des client est %s %s %s %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	
+	for (i = 0; i <= nombreDuCompte ; i++) 
+	{	
+	    printf("les comptes des client est : Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 	}
 }
+
 //Par Ordre Descendant
-void afficheDescendant(){
-	int i;
-  struct Client t;
-	for (i=0;i<nombreDuCompte;i++){
-		if(C[i].Montant<C[i+1].Montant);
+
+void afficheDescendant()
+{	
+
+   int i;
+   struct Client t;
+	
+	 for (i=0;i<nombreDuCompte;i++)
+	 {	
+	    if(C[i].Montant<C[i+1].Montant);
+		
 		t=C[i];
+		
 		C[i]=C[i+1];
+		
 		C[i+1]=t;
-	}
-	for (i = 0; i <= nombreDuCompte ; i++) {
-		printf("les comptes des client est %s %s %s %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
-	}
+	 }
+	
+	  for (i = 0; i <= nombreDuCompte ; i++) 
+	  {	
+	      printf("les comptes des client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	  }
 }
 
 
- // fonction premit de affiche les cliens
-void Affiche(){
-	int ch;
-	printf("1 : Par Ordre Ascendant\n 2:Par Ordre Descendant\n 3 : Compts superieur_Ascendant\n 4 : Compts superieur_Descendant");
-	scanf("%d",&ch);
-	switch(ch){
-		case 1:
-			afficheAscendant();
-			break;
-		case 2:
-		    afficheDescendant();
-			break;
-		case 3:
-			affichSUP();
-			break;
-		case 4:
-			AffichD();
-		    break;	
-	}
+void Retour(){
 	
-	
-}    
-void rojo3(){
 	int c;
-	printf("1:retur au menu\n 2: sorti dans le programme\n");
+	
+	printf("1:retur au menu\n  clic sur une boutton pour quitter le programme\n");
 	scanf("%d",&c);
+	
 	system("cls");
-	switch(c){
-		case 1:
+	
+	switch(c)
+	{	
+	    case 1:
+			
 			Menu();
 			break;
+		
 		default :
 			printf("vous avez quitter le programme");
 	}
 }
 
 // Par Ordre Ascendant (les comptes bancaires ayant un montant supérieur à un chiffre introduit)
-void affichSUP(){
-		int i;
-		float A;
-		printf("saisir un Montant ");
-		scanf("%f",&A);
-  struct Client t;
-	for (i=0;i<nombreDuCompte;i++){
-		if(C[i].Montant>C[i+1].Montant);
+
+void affichSUP()
+{		
+    int i;
+		
+	float A;
+		
+	printf("saisir un Montant ");
+	scanf("%f",&A);
+  
+    struct Client t;
+	
+	for (i=0;i<nombreDuCompte;i++)
+	{	
+	    if(C[i].Montant>C[i+1].Montant);
+		
 		t=C[i];
+		
 		C[i]=C[i+1];
+		
 		C[i+1]=t;
 	}
-	for (i = 0; i <= nombreDuCompte ; i++) {
-		if (C[i].Montant>A)
-		printf("les comptes des client est %s %s %s %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	
+	for (i = 0; i <= nombreDuCompte ; i++) 
+	{  	
+	    if (C[i].Montant>A)
+		
+		printf("les comptes des client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 	}
 }
+
 //Par Ordre Descendant (les comptes bancaires ayant un montant supérieur à un chiffre introduit)
-void AffichD(){
-		int i;
-		float A;
-		printf("saisir un Montant");
-		scanf("%f",&A);
-  struct Client t;
-	for (i=0;i<nombreDuCompte;i++){
-		if(C[i].Montant<C[i+1].Montant);
+
+void AffichD()
+{		
+    int i;
+	
+	float A;
+	
+	printf("saisir un Montant");
+	scanf("%f",&A);
+    
+	struct Client t;
+	
+	for (i=0;i<nombreDuCompte;i++)
+	{	
+	    if(C[i].Montant<C[i+1].Montant);
+		
 		t=C[i];
+		
 		C[i]=C[i+1];
+		
 		C[i+1]=t;
 	}
-	for (i = 0; i <= nombreDuCompte ; i++) {
-		if (C[i].Montant>A)
-		printf("les comptes des client est %s %s %s %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	for (i = 0; i <= nombreDuCompte ; i++) 
+	{	
+	    if (C[i].Montant>A)
+		
+		printf("les comptes des client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 	}
 	
 }
-//Fidélisation
-void Fidelisation(){
+
+// fonction premit de affiche les cliens
+
+void Affiche()
+{	
+    int ch;
+	
+	printf("1 : Par Ordre Ascendant\n 2:Par Ordre Descendant\n 3 : Comptes superieur_Ascendant\n 4 : Comptes superieur_Descendant");
+	scanf("%d",&ch);
+	
+	switch(ch)
+	{	
+	   
+	   case 1:
+			afficheAscendant();
+			break;
+		
+		case 2:
+		    afficheDescendant();
+			break;
+		
+		case 3:
+			affichSUP();
+			break;
+		
+		case 4:
+			AffichD();
+		    break;	
+	}
+	
 	
 }
-void Menu(){
-		int choix,i ,N,q;
+
+//Fidélisation
+
+void Fidelisation()
+{	 
+    struct Client t;
+	
+	int i;
+	
+	for (i=0;i<nombreDuCompte;i++)
+	{	
+	    if(C[i].Montant<C[i+1].Montant);
+		
+		t=C[i];
+		
+		C[i]=C[i+1];
+		
+		C[i+1]=t;
+	}
+	
+	for (i = 0; i <3 ; i++) 
+	{	
+	    printf("les comptes de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+		
+		C[i].Montant=C[i].Montant*1.3;
+		
+		printf("le nouvele Mantant de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f\n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	}
+	
+	
+}
+
+//le menu principale de programme
+
+void Menu()
+{		
+    int choix,i ,N,q;
    	
-   		system("cls");
-   		   printf("\t\t\t\tMENU\n");
-   		   printf("\t\t\t1 : ajouter un seul Client\n\n");
-   		   printf("\t\t\t2 : ajouter plusieur Client\n\n");
-   		   printf("\t\t\t3 : operation \n\n");
-   		   printf("\t\t\t4 : affichage\n\n");
-   		   printf("\t\t\t5 : recherche un client par CIN \n\n");
-   		   printf("\t\t\t0 : Quitter\n");
-   		   printf("entree votre choix\t");
-   		   scanf("%d",&choix);
-   	    switch(choix){
-   		 	case 1:
-   		 		Ajouter_client();
-   		 		rojo3();
-   		 		break;
+   		   
+	printf("\t\t\t\tMENU\n");
+   	
+	printf("\t\t\t1 : ajouter un seul Client\n\n");
+   	
+    printf("\t\t\t2 : ajouter plusieur Client\n\n");
+   	
+	printf("\t\t\t3 : operation \n\n");
+   	
+	printf("\t\t\t4 : affichage\n\n");
+   		  
+    printf("\t\t\t5 : recherche un client par CIN \n\n");
+   	
+	printf("\t\t\t6 : Fidelisation\n\n");
+   		   
+	printf("\t\t\t0 : Quitter\n");
+   		   
+	printf("entree votre choix\t");
+   	scanf("%d",&choix);
+   	    
+	switch(choix)
+   	{	 	
+	    case 1:
    		 		
-   		 	case 2:
-   		 		printf("donner nombre de compts\t");
-   		 		scanf("%d",&N);
-   		 		for(i=0;i<N;i++){
-					 Ajouter_client();}
-					 	rojo3();
-   		 		break;
-   		 	case 3:
-            recherche();
-            	rojo3();
+			Ajouter_client();
+	 		Retour();
+	 		break;
+   		 		
+   		case 2:
+   		 		
+			printf("donner nombre de compts\t");
+	 		scanf("%d",&N);
+	 		
+			for(i=0;i<N;i++)
+			{
+			   Ajouter_client();
+			}
+			Retour();
+	 		break;
+   		 	
+		case 3:
+            
+			recherche();
+            Retour();
             break;
-            case 4:
-            	Affiche();
-            		rojo3();
-            	break;
-            case 5:
-                Recherche_par_CIN();
-            	rojo3();
-            	break;
-            default :            	
+            
+		case 4:
+            	
+			Affiche();
+            Retour;
+            break;
+            
+		case 5:
+                
+			Recherche_par_CIN();
+            Retour();
+            break;
+            
+		case 6:
+            
+			Fidelisation();
+            break;
+            
+		default :            	
+			
 			printf("vous avez Quitter");
 				 		
 	   }
    		
 }
-int main(){
-    	
+
+int main()
+{    
+   printf("\t\t\t\t\t*****************************\n");
+   printf("\t\t\t\t\tGESTION DES COMPTES BANQUIRE\n ");
+   printf("\t\t\t\t\t*****************************\n\n");	
    Menu(); 
 	   
 return 0;
