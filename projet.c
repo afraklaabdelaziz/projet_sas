@@ -318,9 +318,9 @@ void Fidelisation()
 	
 	for (i=0;i<nombreDuCompte;i++)
 	{	
-	for (k=0;i<nombreDuCompte-i-1;k++)
+	for (k=0;k<nombreDuCompte-i-1;k++)
 	{
-	    if(C[k].Montant<C[k+1].Montant);{
+	    if(C[k].Montant<C[k+1].Montant){
 		
 		   t=C[k];
 		
