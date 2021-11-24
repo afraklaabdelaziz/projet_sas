@@ -213,16 +213,19 @@ void affichSUP()
 	
 	for (i=0;i<nombreDuCompte-1;i++)
 	{
-	for (k=0;k<nombreDuCompte-i-1;k++)	
+	for (k=0;k<=nombreDuCompte-i-1;k++)	
 	{	
-	    if(C[k].Montant>C[k+1].Montant);
+	    if(C[k].Montant>C[k+1].Montant){
+		
 		
 		t=C[k];
 		
 		C[k]=C[k+1];
 		
 		C[k+1]=t;
+	   }
 	}
+	
 	}
 	
 	for (i = 0; i <= nombreDuCompte ; i++) 
@@ -248,16 +251,18 @@ void AffichD()
 	
 	for (i=0;i<nombreDuCompte-1;i++)
 	{
-	for (k=0;k<nombreDuCompte-i-1;k++)	
+	for (k=0;k<=nombreDuCompte-i-1;k++)	
 	{
 	
-	    if(C[k].Montant<C[k+1].Montant);
+	    if(C[k].Montant<C[k+1].Montant){
+		
 		
 		t=C[k];
 		
 		C[k]=C[k+1];
 		
 		C[k+1]=t;
+	   }
 	}
 	}
 	for (i = 0; i <= nombreDuCompte ; i++) 
@@ -324,13 +329,16 @@ void Fidelisation()
 	
 	for (i = 0; i <3 ; i++) 
 	{	
-	    printf("les comptes de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	    //printf("les comptes de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 		
 		C[i].Montant+=C[i].Montant*0.013;
 		
 	
-	     printf("le nouvele Mantant de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f\n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	     
 	
+	}
+	for(i=0;i<nombreDuCompte;i++){
+		printf("le nouvele Mantant de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f\n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 	}
 }
  
