@@ -136,6 +136,65 @@ void Recherche_par_CIN()
            }
         }
 }
+//Ordre Descendant Par NOm
+
+void afficheDescendantNom()
+{	
+
+   int i,k;
+   struct Client t;
+	
+	 for (i=0;i<nombreDuCompte;i++)
+	 {	
+	 for(k=0;k<=nombreDuCompte-i-1;k++)
+	 {
+	    if(strcmp(C[k].Nom,C[k+1].Nom)<0)
+		
+		{
+		t=C[k];
+		
+		C[k]=C[k+1];
+		
+		C[k+1]=t;
+	    }
+	 }
+	 }
+	
+	  for (i = 0; i < nombreDuCompte ; i++) 
+	  {	
+	      printf("le compte de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	  }
+}
+
+//Ordre ascendant Par NOm
+
+void afficheascendantNom()
+{	
+
+   int i,k;
+   struct Client t;
+	
+	 for (i=0;i<nombreDuCompte;i++)
+	 {	
+	 for(k=0;k<=nombreDuCompte-i-1;k++)
+	 {
+	    if(strcmp(C[k].Nom,C[k+1].Nom)>0)
+		
+		{
+		t=C[k];
+		
+		C[k]=C[k+1];
+		
+		C[k+1]=t;
+	    }
+	 }
+	 }
+	
+	  for (i = 0; i < nombreDuCompte ; i++) 
+	  {	
+	      printf("le compte de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n \n ",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	  }
+}
 
 //  Par Ordre Ascendant
 
@@ -280,7 +339,7 @@ void Affiche()
 {	
     int ch;
 	
-	printf("1 : Par Ordre Ascendant\n 2:Par Ordre Descendant\n 3 : Comptes superieur_Ascendant\n 4 : Comptes superieur_Descendant");
+	printf("1 : Par Ordre Ascendant\n 2:Par Ordre Descendant\n 3 : Comptes superieur_Ascendant\n 4 : Comptes superieur_Descendant\n 5 : Ascendant par Nom\n 6 :Descendant par Nom\n ");
 	scanf("%d",&ch);
 	
 	switch(ch)
@@ -300,7 +359,15 @@ void Affiche()
 		
 		case 4:
 			AffichD();
-		    break;	
+		    break;
+		
+		case 5:
+		    afficheascendantNom();
+			break;
+		
+		case 6:
+		     afficheDescendantNom();
+			 break;	
 	}
 	
 	
