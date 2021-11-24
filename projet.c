@@ -145,7 +145,7 @@ void afficheAscendant()
    
    struct Client t;
 	
-	for (i=0;i<nombreDuCompte-1;i++)
+	for (i=0;i<nombreDuCompte;i++)
 	{	
 	for(k=0;k<nombreDuCompte-i-1;k++)
 	{
@@ -174,7 +174,7 @@ void afficheDescendant()
    int i,k;
    struct Client t;
 	
-	 for (i=0;i<nombreDuCompte-1;i++)
+	 for (i=0;i<nombreDuCompte;i++)
 	 {	
 	 for(k=0;k<=nombreDuCompte-i-1;k++)
 	 {
@@ -211,7 +211,7 @@ void affichSUP()
   
     struct Client t;
 	
-	for (i=0;i<nombreDuCompte-1;i++)
+	for (i=0;i<nombreDuCompte;i++)
 	{
 	for (k=0;k<=nombreDuCompte-i-1;k++)	
 	{	
@@ -249,7 +249,7 @@ void AffichD()
     
 	struct Client t;
 	
-	for (i=0;i<nombreDuCompte-1;i++)
+	for (i=0;i<nombreDuCompte;i++)
 	{
 	for (k=0;k<=nombreDuCompte-i-1;k++)	
 	{
@@ -314,31 +314,31 @@ void Fidelisation()
 {	 
     struct Client t;
 	
-	int i;
+	int i,k;
 	
 	for (i=0;i<nombreDuCompte;i++)
 	{	
-	    if(C[i].Montant<C[i+1].Montant);
+	for (k=0;i<nombreDuCompte-i-1;k++)
+	{
+	    if(C[k].Montant<C[k+1].Montant);{
 		
-		t=C[i];
+		   t=C[k];
 		
-		C[i]=C[i+1];
+		   C[k]=C[k+1];
 		
-		C[i+1]=t;
+		   C[k+1]=t;
+	    }
 	}
-	
+	}
 	for (i = 0; i <3 ; i++) 
 	{	
-	    //printf("les comptes de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
+	    printf("les comptes de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f \n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 		
 		C[i].Montant+=C[i].Montant*0.013;
 		
 	
-	     
+	     printf("le nouvele Mantant de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f\n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 	
-	}
-	for(i=0;i<nombreDuCompte;i++){
-		printf("le nouvele Mantant de client est:\n Nom : %s |Prenom : %s |CIN : %s |Montant : %f\n\n",C[i].Nom,C[i].Prenom,C[i].CIN,C[i].Montant);
 	}
 }
  
