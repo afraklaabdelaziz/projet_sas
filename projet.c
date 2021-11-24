@@ -511,6 +511,9 @@ void Menu()
 
 int main()
 {    
+printf("*************\n");
+printf("le nombre des\ncomptes cree\n   est : %d\n",nombreDuCompte);
+printf("***************\n");
    printf("\t\t\t\t\t*****************************\n");
    printf("\t\t\t\t\tGESTION DES COMPTES BANQUIRE\n ");
    printf("\t\t\t\t\t*****************************\n\n");	
